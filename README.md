@@ -21,6 +21,8 @@
 * `git clone https://github.com/0x48piraj/advanced-calculator`
 * `cd advanced-calculator`
 * `npm install`
+![image](https://user-images.githubusercontent.com/5800726/34323038-ca9a6bdc-e85d-11e7-8b25-aec8ce3117e6.png)
+
 * `ember serve`
 * Visit your app at _**[http://localhost:4200](http://localhost:4200)**_.
 * Visit your tests at _**[http://localhost:4200/tests](http://localhost:4200/tests)**_.
