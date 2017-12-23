@@ -11,8 +11,8 @@ You will need the following things properly installed on your computer.
 
 ## Running / Development
 
-* `git clone <repository-url>` this repository
-* `cd Pcalc`
+* `git clone https://github.com/0x48piraj/advanced-calculator`
+* `cd advanced-calculator`
 * `npm install`
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
