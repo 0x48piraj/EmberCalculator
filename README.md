@@ -1,6 +1,8 @@
 # Advanced Calculator in Ember.JS
 
-## Prerequisites
+## Running / Run Tests / Building / Deploying
+
+### Prerequisites
 
 You will need the following things properly installed on your computer.
 
@@ -9,7 +11,7 @@ You will need the following things properly installed on your computer.
 * [Ember CLI](https://ember-cli.com/)
 * [Google Chrome](https://google.com/chrome/)
 
-## Running / Development
+### Running / Development
 
 * `git clone https://github.com/0x48piraj/advanced-calculator`
 * `cd advanced-calculator`
@@ -21,8 +23,6 @@ You will need the following things properly installed on your computer.
 ### Deploying
 
 Specify what it takes to deploy your app.
-
-# Running Tests / Building
 
 ### Running Tests
 
