@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <title>Calculator | 0x48piraj</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	body{
+		background-image: -webkit-linear-gradient(top left, #5cc8ff 0%, #d63c6b 100%);
+		background-image: linear-gradient(to bottom right, #5cc8ff 0%, #d63c6b 100%);
+	}
+
+	.calc{
+		margin: 50px auto;
+		padding-top: 20px;
+		width: 350px;
+		height: 422px;
+		background-image: -webkit-linear-gradient(#DDD 0px, #FFF 3px, #DDD 5px, #DDD 435px, #ccc 440px, #DDD 450px);
+		background-image: -o-linear-gradient(#DDD 0px, #FFF 3px, #DDD 5px, #DDD 435px, #ccc 440px, #DDD 450px);
+		background-image: linear-gradient(#DDD 0px, #FFF 3px, #DDD 5px, #DDD 435px, #ccc 440px, #DDD 450px);
+		box-shadow: 3px 3px 5px #888, 0px 0px 15px #777;
+	}
+	.display{
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	.display input{
+		height: 45px;
+		width: 300px;
+		background: -webkit-linear-gradient(#323232, #4e4e4e);
+		background: -o-linear-gradient(#323232, #4e4e4e);
+		background: linear-gradient(#323232, #4e4e4e);
+		border: 2px solid #555;
+		border-radius: 5px;
+		font-size: 40px;
+		text-align: right;
+		padding: 2px;
+		color: #e3e7ea;
+	}
+	.buttons{
+		padding: 0 18px 0 18px;
+	}
+	.buttons button{
+		margin: 5px 3.5px;
+		font-size: 22px;
+		color: #5e5e5d;
+		font-weight: bold;
+		width: 55px;
+		height: 55px;
+		border-radius: 5px;
+		border: 1px solid #8a8a7b;
+		background: -webkit-linear-gradient(#DCD6D0 0px, #ECE9E5 2px, #DCD6D0 4px, #C5C1BB 50px, #B5AEA6 52px, #C5C1BB 55px);
+		background: -o-linear-gradient(#DCD6D0 0px, #ECE9E5 2px, #DCD6D0 4px, #C5C1BB 50px, #B5AEA6 52px, #C5C1BB 55px);
+		background: linear-gradient(#DCD6D0 0px, #ECE9E5 2px, #DCD6D0 4px, #C5C1BB 50px, #B5AEA6 52px, #C5C1BB 55px);
+		box-shadow: 1px 1px 2px #9b9b9b;
+	}
+	.buttons button:hover{
+		color: #3e3e3d;
+		background: -webkit-linear-gradient(#B5AEA6 2px, #C5C1BB 4px, #DCD6D0 50px, #C5C1BB 55px);
+		background: -o-linear-gradient(#B5AEA6 2px, #C5C1BB 4px, #DCD6D0 50px, #C5C1BB 55px);
+		background: linear-gradient(#B5AEA6 2px, #C5C1BB 4px, #DCD6D0 50px, #C5C1BB 55px);
+		box-shadow: 1px 1px 2px #9b9b9b, 1px 1px 2px #B5AEA6 inset;
+		cursor: pointer;
+	}
+
+	.buttons .tri, .buttons .operator, .buttons #backspace{
+		color: #fff;
+		background: -webkit-linear-gradient(#9D9994 0px, #AEABA6 2px, #9D9994 4px, #79736D 50px, #5A5652 52px, #79736D 55px);
+		background: -o-linear-gradient(#9D9994 0px, #AEABA6 2px, #9D9994 4px, #79736D 50px, #5A5652 52px, #79736D 55px);
+		background: linear-gradient(#9D9994 0px, #AEABA6 2px, #9D9994 4px, #79736D 50px, #5A5652 52px, #79736D 55px);
+	}
+	.buttons .tri:hover, .buttons .operator:hover,  .buttons #backspace:hover{
+		color: #eee;
+		background: -webkit-linear-gradient(#5A5652 2px, #79736D 4px, #9D9994 50px, #79736D 55px);
+		background: -o-linear-gradient(#5A5652 2px, #79736D 4px, #9D9994 50px, #79736D 55px);
+		background: linear-gradient(#5A5652 2px, #79736D 4px, #9D9994 50px, #79736D 55px);
+	}
+	.buttons .col-2{
+		width: 117px;
+	}
+
+	.buttons #equal, .buttons #reset{
+		color: #fff;
+		background: -webkit-linear-gradient(#F8A452 0px, #F8EBC2 2px, #F8A452 4px, #F18C27 50px, #D47C25 52px, #F18C27 55px);
+		background: -o-linear-gradient(#F8A452 0px, #F8EBC2 2px, #F8A452 4px, #F18C27 50px, #D47C25 52px, #F18C27 55px);
+		background: linear-gradient(#F8A452 0px, #F8EBC2 2px, #F8A452 4px, #F18C27 50px, #D47C25 52px, #F18C27 55px);
+	}
+
+	.buttons #equal:hover, .buttons #reset:hover{
+		color: #eee;
+		background: -webkit-linear-gradient(#D47C25 2px, #F18C27 4px, #F8A452 50px, #F18C27 55px);
+		background: -o-linear-gradient(#D47C25 2px, #F18C27 4px, #F8A452 50px, #F18C27 55px);
+		background: linear-gradient(#D47C25 2px, #F18C27 4px, #F8A452 50px, #F18C27 55px);
+	}
+::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: rgba(255,255,255,0.0);
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: rgba(0,0,0,0.1); 
+	border-radius: 5px;
+}
+	</style>
+
+</head>
+<body>
+<h1 style="color:white;" align="center">Ember.js Advanced Calculator | Bonus Task</h1>
+<h2 style="color:white;" align="center">Created by Piyush Raj</h1>
+<h3 style="color:white;" align="center">@0x48piraj</h1>
+	<div class="calc">
+
+		<div class="display">
+			<input type="text" id="displayscreen" disabled>
+		</div>
+
+		<div class="buttons">
+
+			<button id="reset" class="col-2">CE</button><!--
+			--><button id="equal" class="col-2">=</button><!--
+			--><button id="backspace">←</button>
+
+
+			<button class="tri">sin</button><!--
+			--><button class="num">7</button><!--
+			--><button class="num">8</button><!--
+			--><button class="num">9</button><!--
+			--><button class="operator" id="plus">+</button>
+
+			<button class="tri">cos</button><!--
+			--><button class="num">4</button><!--
+			--><button class="num">5</button><!--
+			--><button class="num">6</button><!--
+			--><button class="operator" id="minus">-</button>
+
+			<button class="tri">tan</button><!--
+			--><button class="num">1</button><!--
+			--><button class="num">2</button><!--
+			--><button class="num">3</button><!--
+			--><button class="operator" id="times">*</button>
+
+			<button class="tri">cot</button><!--
+			--><button class="num col-2">0</button><!--
+			--><button id="dot">.</button><!--
+			--><button class="operator" id="divide">/</button>
+
+	</div>
+
+
+	<script>
+	(function(){
+		var stack = [];
+		var temp = [];
+		temp[0] = "isNum";
+		temp[1] = "0";
+
+		var tempDec = false;
+		var displayScreen = document.getElementById('displayscreen');
+		displayscreen.value = "0";
+		function displayChange(x){
+			displayscreen.value = x;
+		}
+		function calc(){
+			if (stack.length == 3){
+				switch (stack[1]){
+					case "+":
+						stack[0] = stack[0] + stack[2];
+						break;
+					case "-":
+						stack[0] = stack[0] - stack[2];
+						break;
+					case "*":
+						stack[0] = stack[0] * stack[2];
+						break;
+					case "/":
+						if (stack[2] == 0){
+							stack.length = 0;
+						}
+						else{
+							stack[0] = stack[0] / stack[2];
+						}
+						break;
+				}
+
+				stack.pop();
+				stack.pop();
+
+
+				if (stack.length==0){
+					resetDisplay();
+					displayChange('ERROR!');
+				}
+				else{
+
+					stack[0]=parseFloat((stack[0]).toFixed(10));
+					displayChange(stack[0]);
+				}
+			}
+
+		}
+
+		function stackPush(){
+			switch (temp[0]){
+				case "isNum":
+					stack.push(temp[1]);
+					break;
+				case "isOpr":
+					stack.push(temp[1]);
+					break;
+				default:
+					break;
+			}
+			calc();	
+		}
+
+		function resetDisplay(){
+			temp.length = 0;
+			stack.length = 0;
+			temp[0] = "isNum";
+			temp[1] = "0";
+			tempDec = false;
+			displayChange(temp[1]);
+		}
+
+		var dotBtn = document.getElementById("dot");
+		dotBtn.onclick = function(e){
+			if (temp[0]=="isNum" && !tempDec){
+				temp[1] = temp[1] + '.';
+				tempDec = true;
+				displayChange(temp[1]);
+			}
+		}
+
+
+		var numBtn = document.getElementsByClassName("num");
+		function inputNum(i){
+			return function(e){
+
+				if(temp[0] == "isNum"){
+
+					temp[1] = String(temp[1]);
+					temp[1] = temp[1] + String(e.target.innerHTML);
+					if( (String(temp[1]).indexOf('.')==-1)||e.target.innerHTML!='0' ){
+						temp[1] = parseFloat(temp[1]);
+					}
+				}
+
+				else if(temp[0] ==  "isEqu"){
+					temp[1] = parseFloat(e.target.innerHTML);
+					stack.pop();
+				}
+
+				else{
+					stackPush();
+					temp[1] = parseFloat(e.target.innerHTML);
+				}
+				temp[0] = "isNum";
+				displayChange(temp[1]);
+				console.log(temp);
+				console.log(stack);
+			}
+		}
+
+		for (var i = 0; i< numBtn.length; i++){
+			numBtn[i].onclick = inputNum(i);
+		}
+
+		var oprBtn = document.getElementsByClassName("operator");
+		function inputOpr(i){
+			return function(e){
+
+				if (temp[0] !="isOpr") {
+					stackPush();
+				}
+				temp[0] = "isOpr";
+				temp[1] = String(e.target.innerHTML);
+				tempDec = false;
+				console.log(temp);
+				console.log(stack);
+			}
+		}
+
+		for (var i = 0; i< oprBtn.length; i++){
+			oprBtn[i].onclick = inputOpr(i);
+		}
+
+		var equBtn = document.getElementById("equal");
+		equBtn.onclick = function(e){
+
+			if (temp[0] == "isOpr"){
+				temp.pop();
+				temp.pop();
+			}
+			stackPush();
+			temp[0] = "isEqu";
+			temp[1] = "="
+			tempDec = false;
+			console.log(temp);
+			console.log(stack);
+		}
+		function calcTri(e,number){
+			switch(e.target.innerHTML){
+				case 'sin':
+					number = Math.sin(number*Math.PI/180);
+					break;
+				case 'cos':
+					number = Math.cos(number*Math.PI/180);
+					break;
+				case 'tan':
+					number = Math.tan(number*Math.PI/180);
+					break;
+				case 'cot':
+					number = 1 / Math.tan(number*Math.PI/180);
+					break;
+			}
+			temp[0] = 'isNum';
+			temp[1] = number;
+			temp[1]=parseFloat((temp[1]).toFixed(10));
+			console.log(temp[1]);
+			displayChange(temp[1]);
+		}
+
+		var triBtn = document.getElementsByClassName("tri");
+		function inputTri(i){
+			return function(e){
+				if (temp[0]=="isNum"){
+					calcTri(e,temp[1]);
+				}
+				if (temp[0]=="isEqu"){
+					calcTri(e,stack[0]);
+				}
+			}
+		}
+		for (var i = 0; i< triBtn.length; i++){
+			triBtn[i].onclick = inputTri(i);
+		}
+
+		var cBtn = document.getElementById("backspace");
+		cBtn.onclick = function(e){
+			if(temp[0]=="isEqu"){
+				temp[0]="isNum";
+				temp[1]=stack[0];
+			}
+			temp[1] = String(temp[1]);
+			temp[1] = temp[1].substring(0,temp[1].length-1);
+			temp[1] = parseFloat(temp[1]);
+			if( String(temp[1]).indexOf('.')==-1 ){
+				tempDec =false;
+			}
+			
+			if (isNaN(temp[1])){
+				temp[1] = 0;
+			}
+			displayChange(temp[1]);
+			console.log(temp[1]);
+
+
+		}
+		var ceBtn = document.getElementById("reset");
+		ceBtn.onclick = function(e){
+			resetDisplay();
+			console.log(temp);
+			console.log(stack);
+		}
+	})()
+
+
+	</script>
+</div></body>
+</html>
