@@ -15,8 +15,14 @@ You will need the following things properly installed on your computer.
 * `cd advanced-calculator`
 * `npm install`
 * `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+* Visit your app at _**[http://localhost:4200](http://localhost:4200)**_.
+* Visit your tests at _**[http://localhost:4200/tests](http://localhost:4200/tests)**_.
+
+### Deploying
+
+Specify what it takes to deploy your app.
+
+# Running Tests / Building
 
 ### Running Tests
 
@@ -27,7 +33,3 @@ You will need the following things properly installed on your computer.
 
 * `ember build` (development)
 * `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
