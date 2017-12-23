@@ -31,7 +31,29 @@ You will need the following things properly installed on your computer.
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+#### Surge.sh
+
+![image](https://user-images.githubusercontent.com/5800726/34321301-ca431de0-e831-11e7-81c3-6442558125aa.png)
+
+
+#### Heroku
+
+![image](https://user-images.githubusercontent.com/5800726/34321312-28c5f554-e832-11e7-990b-848a437556f8.png)
+
+##### Note : 
+
+```
+$ heroku create --buildpack https://github.com/tonycoco/heroku-buildpack-ember-cli.git
+
+Creating app... !
+ !    You've reached the limit of 5 apps for unverified accounts. Delete some
+ !    apps or add a credit card to verify your account.
+
+```
+
+#### gh-pages
+
+> **I was not able to deploy using `gh-pages`**
 
 ### Running Tests
 
