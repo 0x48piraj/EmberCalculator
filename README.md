@@ -2,12 +2,6 @@
 
 [![HitCount](http://hits.dwyl.io/0x48piraj/advanced-calculator.svg)](http://hits.dwyl.io/0x48piraj/advanced-calculator)
 
-
-![image](https://user-images.githubusercontent.com/5800726/34321122-eab965e2-e82d-11e7-9705-37d07072925b.png)
-
-
-## Demonstration :
-
 ![calc-demo](https://user-images.githubusercontent.com/5800726/34321173-ec9d1420-e82e-11e7-89b6-e9f9c20dc4c8.gif)
 
 ## Running / Run Tests / Building / Deploying
