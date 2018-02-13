@@ -1,5 +1,8 @@
 # Advanced Calculator in Ember.JS
 
+[![HitCount](http://hits.dwyl.io/0x48piraj/advanced-calculator.svg)](http://hits.dwyl.io/0x48piraj/advanced-calculator)
+
+
 ![image](https://user-images.githubusercontent.com/5800726/34321122-eab965e2-e82d-11e7-9705-37d07072925b.png)
 
 
